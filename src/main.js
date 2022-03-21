@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import App from './App.vue';
+import GamePage from './GamePage.vue';
 
 Vue.config.productionTip = false;
 
 new Vue({
-  render: (h) => h(App),
+  render: (h) => h(GamePage),
 }).$mount('#app');

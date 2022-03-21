@@ -3,6 +3,7 @@
     <game-field
       :field="field"
       class="game__field"
+      @update="onUpdateField"
     />
   </div>
 </template>
@@ -23,6 +24,11 @@ export default {
         [0, 0, 0],
       ],
     };
+  },
+  methods: {
+    onUpdateField(rowIndex, colIndex, value) {
+      this.field[rowIndex][colIndex] = value;
+    },
   },
 };
 </script>

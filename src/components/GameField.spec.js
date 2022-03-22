@@ -34,4 +34,28 @@ describe('GameField component', () => {
 
     expect(wrapper.emitted('update')[0]).toEqual([1, 2, 1]);
   });
+
+  it('displays cross component for 1 in field', () => {
+    const field = createEmptyField();
+    field[1][2] = 1;
+    const wrapper = shallowMount(GameField, {
+      propsData: { field },
+    });
+
+    expect(wrapper.findAll('tr').at(1).findAll('td').at(2)
+      .find('cross-icon-stub')
+      .exists()).toBe(true);
+  });
+
+  it('displays circle component for 2 in field', () => {
+    const field = createEmptyField();
+    field[1][2] = 2;
+    const wrapper = shallowMount(GameField, {
+      propsData: { field },
+    });
+
+    expect(wrapper.findAll('tr').at(1).findAll('td').at(2)
+      .find('circle-icon-stub')
+      .exists()).toBe(true);
+  });
 });

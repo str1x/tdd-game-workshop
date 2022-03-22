@@ -10,18 +10,28 @@
         :key="`col-${rowIndex}-${colIndex}`"
         class="game-field__cell"
         @click="$emit('update', rowIndex, colIndex, 1)"
-      ></td>
+      >
+        <cross-icon v-if="cell === 1" />
+        <circle-icon v-else-if="cell === 2" />
+      </td>
     </tr>
   </table>
 </template>
 
 <script>
+import CrossIcon from '@/components/icons/CrossIcon.vue';
+import CircleIcon from '@/components/icons/CircleIcon.vue';
+
 const fieldValidator = (field) => Array.isArray(field)
   && Array.isArray(field[0])
   && field[0].every((value) => Number.isInteger(value));
 
 export default {
   name: 'GameField',
+  components: {
+    CrossIcon,
+    CircleIcon,
+  },
   props: {
     field: {
       type: Array,

@@ -27,7 +27,9 @@ export default {
   },
   methods: {
     onUpdateField(rowIndex, colIndex, value) {
-      this.field[rowIndex][colIndex] = value;
+      const row = this.field[rowIndex];
+      row[colIndex] = value;
+      this.$set(this.field, rowIndex, row);
     },
   },
 };

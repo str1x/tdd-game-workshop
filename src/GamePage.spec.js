@@ -32,10 +32,12 @@ describe('GamePage', () => {
 
     it('changes field data on @update GameField event', async () => {
       const wrapper = shallowMount(GamePage);
+      const setSpy = jest.spyOn(wrapper.vm, '$set');
       await wrapper.setData({ field: createEmptyField() });
 
       wrapper.findComponent({ name: 'GameField' }).vm.$emit('update', 1, 2, 1);
 
+      expect(setSpy).toHaveBeenCalledWith(wrapper.vm.field, 1, [0, 0, 1]);
       const field = wrapper.findComponent({ name: 'GameField' }).props('field');
       expect(field[1][2]).toBe(1);
     });
